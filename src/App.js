@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Navbar from "./components/Navbar";
 import TextForm from "./components/TextForm";
 import Alert from "./components/Alert";
@@ -6,11 +6,42 @@ import "./App.css";
 // import About from "./components/About";
 
 function App() {
-  const [mode, setMode] = useState("light");
+  const d1 = new Date();
+  
+  const [mode, setMode] = useState();
+  
+  const t1 = {
+    hours: d1.getHours(),
+    min: d1.getMinutes()
+  }
+
+  const t2 = t1.hours + (t1.min/60);
   const [myStyle, setMyStyle] = useState({
-    color: "black",
-    backgroundColor: "light",
+    // color: "black",
+    // backgroundColor: "light"
   });
+
+  useEffect(() => {
+    //Runs only on the first render
+    if(!(t2 >= 6 && t2 <= 18)){
+      setMode("dark");
+      setMyStyle({
+        color: "white",
+        backgroundColor: "#022902",
+      });
+      document.body.style.backgroundColor = "#011504";
+    } else {
+      setMode("light");
+      setMyStyle({
+        color: "black",
+        backgroundColor: "white",
+      });
+      document.body.style.backgroundColor = "#c1eab5";
+    }
+    // eslint-disable-next-line
+  }, []);
+
+
   const toggleMode = () => {
     if (mode === "dark") {
       setMode("light");

@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 
 export default function Navbar(props) {
+  
   return (
     <nav className={`navbar navbar-expand-lg navbar-${props.mode === "light"?'success':"#44B407"} bg-${props.mode === "light"?'success':"dark"}`}>
       <div className={`container-fluid text-${props.mode === 'light'?"black":'light'}`}>
@@ -36,6 +37,7 @@ export default function Navbar(props) {
           {/* Darkmode enable switch */}
           <div className="form-check form-switch">
             <input
+            defaultChecked={`${props.mode === 'light'?'true':'false'}`}
             onClick={props.toggleMode}
               className="form-check-input"
               type="checkbox"
