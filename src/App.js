@@ -7,15 +7,15 @@ import "./App.css";
 
 function App() {
   const d1 = new Date();
-  
-  const [mode, setMode] = useState();
-  
   const t1 = {
     hours: d1.getHours(),
     min: d1.getMinutes()
   }
-
   const t2 = t1.hours + (t1.min/60);
+  const c1 = !(t2 >= 6 && t2 <= 18)?'dark':'light'  ;
+  const [mode, setMode] = useState(c1);
+  
+
   const [myStyle, setMyStyle] = useState({
     // color: "black",
     // backgroundColor: "light"
@@ -43,8 +43,8 @@ function App() {
 
 
   const toggleMode = () => {
-    if (mode === "dark") {
-      setMode("light");
+    if (mode === 'dark') {
+      setMode('light');
       setMyStyle({
         color: "black",
         backgroundColor: "white",
@@ -54,7 +54,7 @@ function App() {
       // for app title changing dynamically
       // document.title = "TextUtils";
     } else {
-      setMode("dark");
+      setMode('dark');
       setMyStyle({
         color: "white",
         backgroundColor: "#022902",

@@ -1,8 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { useEffect } from "react";
 
 export default function Navbar(props) {
-  
+  const x1 = (props.mode === 'light')?false:true ;
   return (
     <nav className={`navbar navbar-expand-lg navbar-${props.mode === "light"?'success':"#44B407"} bg-${props.mode === "light"?'success':"dark"}`}>
       <div className={`container-fluid text-${props.mode === 'light'?"black":'light'}`}>
@@ -37,14 +38,14 @@ export default function Navbar(props) {
           {/* Darkmode enable switch */}
           <div className="form-check form-switch">
             <input
-            defaultChecked={`${props.mode === 'light'?'true':'false'}`}
+            defaultChecked={x1}
             onClick={props.toggleMode}
               className="form-check-input"
               type="checkbox"
               id="flexSwitchCheckDefault"
             />
             <label className="form-check-label me-3" htmlFor="flexSwitchCheckDefault">
-              Enable {props.mode === 'light'?"DarkMode":"LightMode"}
+              {props.mode === 'light'?"Enable":"Disable"} DarkMode
             </label>
           </div>
         </div>
